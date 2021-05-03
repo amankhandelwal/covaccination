@@ -8,6 +8,7 @@ import {
     getVaccinationForPincodeAndDate
 } from "./apis";
 import moment from 'moment';
+import {VaccineCenterView} from "./VaccineCenterView";
 
 const useFilter = (
     defaultValue: boolean
@@ -96,7 +97,7 @@ function App() {
                     <p id={"subtitle"}>Check your nearest vaccine centers and slot availability</p>
                 </div>
             </header>
-            <div className={'search flexColumn spaceAround'}>
+            <div className={'search'}>
                 <div className={'select-container'}>
                     <label htmlFor="states">Select State:</label>
                     <select name={"states"} onChange={onStateChange}>
@@ -109,7 +110,19 @@ function App() {
                         {districtList.map(item => <option value={item.district_id}>{item.district_name}</option>)}
                     </select>
                 </div>
-                <button onClick={onSearch}>Search</button>
+                <button id={'searchButton'} onClick={onSearch}>Search</button>
+            </div>
+            <div className={'filters flexRow flex1'}>
+                <button onClick={() => {
+                    setavailableFilter(!availabileFilter)
+                }}>
+                    {availabileFilter ? "Show All Centers" : "Show Available Centers"}
+                </button>
+                <button onClick={() => {
+                    setunder45Filter(!under45Filter)
+                }}>
+                    {under45Filter ? "18+ Age Group" : "All Age Group"}
+                </button>
             </div>
             <div className={"flexColumn list-container"}>
                 {filteredVaccineCenters.length > 0 ? (
@@ -123,49 +136,5 @@ function App() {
         </div>
     );
 }
-
-interface VaccineCenterViewProps {
-    vaccineCenter: VaccinationCenter;
-    checkUnder45Filter: (condition: boolean) => boolean;
-    checkAvailabilityFilter: (condition: boolean) => boolean;
-
-}
-
-const VaccineCenterView = ({vaccineCenter, checkUnder45Filter, checkAvailabilityFilter}: VaccineCenterViewProps) => {
-    const {name, block_name, pincode, fee_type, sessions} = vaccineCenter;
-    const filteredSessions = sessions
-        .filter(item => checkAvailabilityFilter(item.available_capacity > 0))
-        .filter(item => checkUnder45Filter(item.min_age_limit < 45))
-    return (
-        <div className={'flexColumn flexStart flex1 vaccine-center'}>
-            <div className={'flexRow spaceBetween flex1'} style={{width: '100%'}}>
-                <p style={{fontSize: 16, fontWeight: 'bold'}}>{name}</p>
-                <p style={{fontSize: 16, fontWeight: 'bold', color: 'red'}}>{fee_type}</p>
-            </div>
-            <p style={{fontSize: 12, color: '#2F2F2F'}}>{block_name} ( {pincode} )</p>
-            {filteredSessions.map(item => <VaccineCenterSession {...item} />)}
-        </div>
-    );
-}
-
-const VaccineCenterSession = ({min_age_limit, available_capacity, slots, date}: Session) => {
-    const isAvailableEmoji = available_capacity > 0 ?
-        <p className={'availableSlot'}>{`${available_capacity} Slots ✅`}</p>
-        : <p className={'notAvailableSlot'}>{"Not Available ❌"}</p>;
-
-    const under45Allowed = min_age_limit < 45 ? "👦🏻" : "🧓🏼";
-    return (
-        <div className="vaccine-session flexColumn flexStart">
-            <div className={'flexRow spaceBetween flex1'} style={{width: '100%'}}>
-                <p style={{fontSize: 12, fontWeight: 'bold'}}>{date} {under45Allowed}</p>
-                {isAvailableEmoji}
-            </div>
-            <div className={'flexRow vaccine-slot'}>
-                {slots.map(slot => <p className={'slotTime'}>{slot}</p>)}
-            </div>
-        </div>
-    )
-};
-
 
 export default App;
