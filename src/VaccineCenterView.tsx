@@ -30,11 +30,11 @@ const VaccineCenterSession = ({min_age_limit, available_capacity, slots, date}: 
         <p className={'availableSlot'}>{`${available_capacity} Slots ✅`}</p>
         : <p className={'notAvailableSlot'}>{"Not Available ❌"}</p>;
 
-    const under45Allowed = min_age_limit < 45 ? "👦🏻" : "🧓🏼";
+    const under45Allowed = min_age_limit < 45 ? "👦🏻 (18 yrs+)" : "🧓🏼 (45 yrs+)";
     return (
         <div className="vaccine-session flexColumn flexStart">
             <div className={'flexRow spaceBetween flex1'} style={{width: '100%'}}>
-                <p style={{fontSize: 12, fontWeight: 'bold'}}>{date} {under45Allowed}</p>
+                <p style={{fontSize: 12, fontWeight: 'bold'}}>{date} <span style={{color:'red', fontWeight:'normal'}}>{under45Allowed}</span></p>
                 {isAvailableEmoji}
             </div>
             <div className={'flexRow vaccine-slot'}>
