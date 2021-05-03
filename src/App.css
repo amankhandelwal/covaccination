@@ -141,6 +141,7 @@ option {
 
 /***** Vaccine Session ********/
 .vaccine-session {
+    width: 100%;
     align-items: flex-start;
 }
 
@@ -150,6 +151,7 @@ option {
 
 .vaccine-slot {
     flex: 1;
+    width: 100%;
     flex-wrap: wrap;
 }
 
