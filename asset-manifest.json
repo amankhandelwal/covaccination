@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/covaccination/static/css/main.ea4b7d0e.chunk.css",
+    "main.css": "/covaccination/static/css/main.49b38179.chunk.css",
     "main.js": "/covaccination/static/js/main.7d3111ef.chunk.js",
     "main.js.map": "/covaccination/static/js/main.7d3111ef.chunk.js.map",
     "runtime-main.js": "/covaccination/static/js/runtime-main.179b987a.js",
@@ -10,13 +10,13 @@
     "static/js/3.6389d4b9.chunk.js": "/covaccination/static/js/3.6389d4b9.chunk.js",
     "static/js/3.6389d4b9.chunk.js.map": "/covaccination/static/js/3.6389d4b9.chunk.js.map",
     "index.html": "/covaccination/index.html",
-    "static/css/main.ea4b7d0e.chunk.css.map": "/covaccination/static/css/main.ea4b7d0e.chunk.css.map",
+    "static/css/main.49b38179.chunk.css.map": "/covaccination/static/css/main.49b38179.chunk.css.map",
     "static/js/2.4df7f25b.chunk.js.LICENSE.txt": "/covaccination/static/js/2.4df7f25b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.179b987a.js",
     "static/js/2.4df7f25b.chunk.js",
-    "static/css/main.ea4b7d0e.chunk.css",
+    "static/css/main.49b38179.chunk.css",
     "static/js/main.7d3111ef.chunk.js"
   ]
 }
