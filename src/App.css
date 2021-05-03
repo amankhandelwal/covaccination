@@ -8,11 +8,13 @@
     pointer-events: none;
 }
 
+/*
 @media (prefers-reduced-motion: no-preference) {
     .App-logo {
         animation: App-logo-spin infinite 20s linear;
     }
 }
+*/
 
 .App-header {
     background-color: #E8F5DF;
@@ -39,6 +41,10 @@
 }
 
 /********* Common *******/
+.flex1 {
+    display: flex;
+    flex: 1;
+}
 
 .flexRow {
     display: flex;
@@ -62,6 +68,11 @@
 
 .spaceAround {
     justify-content: space-around;
+    align-items: center;
+}
+
+.spaceBetween {
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -120,19 +131,69 @@ button {
 }
 
 /***** Vaccine Center *******/
+.list-container {
+    background-color: #ccc;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
 .vaccine-center {
+    flex: 1;
+    min-width: 350px;
+    max-width: 500px;
+    align-items: flex-start;
+    margin: 20px;
+    padding: 16px;
+    background-color: white;
+    border-radius: 12px;
     border: 1px solid #feefee;
 }
 
 .vaccine-center > p {
     color: #555;
+    margin: 0;
+}
+
+.error {
+    font-size: 15px;
+    color: red;
+    padding: 16px;
+    font-weight: bold;
 }
 
 /***** Vaccine Session ********/
 .vaccine-session {
-    border: 1px solid lightskyblue;
+    align-items: flex-start;
 }
 
 .vaccine-session > p {
     color: #555555;
+}
+
+.vaccine-slot {
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.availableSlot {
+    font-weight: bold;
+    color: #207B35;
+    font-size: 12px;
+}
+.notAvailableSlot {
+    font-weight: bold;
+    color: red;
+    font-size: 12px;
+}
+
+.slotTime {
+    flex: 1;
+    background-color: rgba(41, 170, 96, 0.38);
+    border-radius: 11px;
+    padding: 5px 1px;
+    margin: 5px;
+    font-size: 11px;
+    color: #207B35;
 }

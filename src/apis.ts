@@ -34,9 +34,17 @@ export const getDistrictsForState = (state_id: string) => getRequest<Districts>(
 );
 
 export const getVaccinationForDistrictAndDate = (district_id: string, date: string) => getRequest<VaccinationCenters>(
-    "https://cdn-api.co-vin.in/api/v2/appointment/sessions/calendarByDistrict",
+    "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict",
     {
         district_id,
+        date
+    }
+);
+
+export const getVaccinationForPincodeAndDate = (pincode: string, date: string) => getRequest<VaccinationCenters>(
+    "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin",
+    {
+        pincode,
         date
     }
 );
