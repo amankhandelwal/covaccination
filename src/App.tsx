@@ -44,7 +44,6 @@ function App() {
         const urlParams = new URLSearchParams(window.location.search);
         const district_id = urlParams.get('district_id');
         const pincode = urlParams.get('pincode');
-        const today = moment().format(dateformat);
         getStates()
             .then(data => setStateList(data.states));
         if (pincode != null) {
@@ -75,7 +74,6 @@ function App() {
 
     const onSearch = async () => {
         if (district) {
-            const date = moment().format(dateformat);
             getVaccinationForDistrictAndDate(district.district_id, date)
                 .then(data => setVaccinationCenters(data.centers));
         }
